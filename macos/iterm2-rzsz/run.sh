@@ -7,7 +7,7 @@ sz="iterm2-send-zmodem.sh"
 rz="iterm2-recv-zmodem.sh"
 
 download() {
-    rm $sz $rz $path/$sz $path/$rz
+    rm $path/$sz $path/$rz
     curl -sS -O $url/$sz -O $url/$rz || exit
     chmod +x $sz $rz || exit
     mv $sz $path/$sz || exit
