@@ -6,21 +6,27 @@ path="/usr/local/bin"
 sz="iterm2-send-zmodem.sh"
 rz="iterm2-recv-zmodem.sh"
 
-download() {
-    echo "Downloading $sz and $rz..."
+p(){
+    echo "\033[32m[ $1 ]\033[0m"
+}
+
+getrzsz() {
+    p "Installing lrzsz using brew..."
+    brew install lrzsz
+}
+
+getsh() {
+    p "Downloading $sz and $rz..."
     rm $path/$sz $path/$rz
     curl -sS -O $url/$sz -O $url/$rz || exit
     chmod +x $sz $rz || exit
     mv $sz $path/$sz || exit
     mv $rz $path/$rz || exit
-    echo ""
-    echo "List of downloaded files:"
     ls $path/$sz $path/$rz
 }
 
 todo() {
-    echo ""
-    echo "Please open iterm2 and perform the following operations"
+    p "Please open iterm2 and perform the following operations"
     echo "  1. Click to open 'Preferences...'"
     echo "  2. Choose 'Profiles' tab"
     echo "  3. Select the 'Advanced' tab on the right"
@@ -37,7 +43,8 @@ todo() {
     echo "  6. End"
 }
 
-download
+getrzsz
+getsh
 todo
 
 
