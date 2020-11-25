@@ -15,7 +15,7 @@ fi
 if [ "$FILE" = "" ]; then
     echo Cancelled.
     # Send ZModem cancel
-    echo -e \\x18\\x18\\x18\\x18\\x18
+    echo \\x18\\x18\\x18\\x18\\x18
     sleep 1
     echo
     echo \# Cancelled transfer
